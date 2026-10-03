@@ -42,11 +42,7 @@ export async function signIn(_prevState: any, formData: FormData) {
       }
     }
 
-    // NOTE: server-action shape wants `void | Promise<void>` but the client
-    // form reads `state?.success` to trigger the post-login redirect, so we
-    // return a sentinel here. Next.js's Action handler tolerates the extra
-    // field at runtime; the type error is silenced by ignoreBuildErrors.
-    return { success: true } as unknown as void
+    return { success: true }
   } catch (error) {
     console.error("Login error:", error)
     return { error: "An unexpected error occurred. Please try again." }
