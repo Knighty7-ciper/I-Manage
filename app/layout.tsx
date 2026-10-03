@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { PwaRegister } from "@/components/pwa-register"
 
 export const metadata: Metadata = {
   title: {
@@ -28,6 +29,12 @@ export const metadata: Metadata = {
     "Siemax",
   ],
   generator: "Next.js",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "I-Manage",
+  },
 }
 
 export default function RootLayout({
@@ -37,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="antialiased dark">
-      <body className="font-sans">{children}</body>
+      <body className="font-sans"><PwaRegister />{children}</body>
     </html>
   )
 }

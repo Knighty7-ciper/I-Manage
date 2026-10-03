@@ -1,5 +1,7 @@
 'use client'
 
+"use client"
+
 import Link from "next/link"
 import { ArrowUpRight, BarChart3, Building2, Check, ChevronRight, CircleDollarSign, Menu, ShieldCheck, Smartphone, Sparkles, X } from "lucide-react"
 import { useState } from "react"
@@ -7,9 +9,9 @@ import { Button } from "@/components/ui/button"
 import { BrandWordmark } from "@/components/brand-mark"
 
 const navItems = [
-  { label: "Platform", href: "#platform" },
-  { label: "For landlords", href: "#landlords" },
-  { label: "Landlord app", href: "/app" },
+  { label: "Platform", href: "/platform" },
+  { label: "For landlords", href: "/landlords" },
+  { label: "Landlord app", href: "/dashboard" },
   { label: "Company", href: "/about" },
   { label: "Resources", href: "/resources" },
 ]
@@ -35,7 +37,7 @@ export function MarketingHeader() {
 }
 
 export function MarketingFooter() {
-  return <footer className="bg-[#15231d] text-white"><div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-10"><div><BrandWordmark href="/" showSubtitle={false} size="lg" /><p className="mt-6 max-w-xs text-sm leading-6 text-white/55">The operating system for ambitious landlords and property teams across Africa.</p></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9f45b]">Platform</p><div className="flex flex-col gap-3 text-sm text-white/65"><Link href="/#platform">Overview</Link><Link href="/#landlords">For landlords</Link><Link href="/auth/login">Landlord login</Link><Link href="/auth/sign-up">Create an account</Link></div></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9f45b]">Company</p><div className="flex flex-col gap-3 text-sm text-white/65"><Link href="/about">About I-Manage</Link><Link href="/resources">Resources</Link><Link href="/contact">Contact</Link></div></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9f45b]">Reach us</p><p className="text-sm leading-6 text-white/65">Nairobi, Kenya<br />hello@siemax.co.ke<br />+254 700 000 000</p></div></div><div className="mx-auto flex max-w-[1320px] flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs text-white/40 sm:flex-row sm:justify-between lg:px-10"><span>© {new Date().getFullYear()} Siemax Ltd. All rights reserved.</span><span>Built for property owners who think bigger.</span></div></footer>
+  return <footer className="bg-[#15231d] text-white"><div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-10"><div><BrandWordmark href="/" showSubtitle={false} size="lg" /><p className="mt-6 max-w-xs text-sm leading-6 text-white/55">The operating system for ambitious landlords and property teams across Africa.</p></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9f45b]">Platform</p><div className="flex flex-col gap-3 text-sm text-white/65"><Link href="/platform">Overview</Link><Link href="/landlords">For landlords</Link><Link href="/auth/login">Landlord login</Link><Link href="/auth/sign-up">Create an account</Link></div></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9f45b]">Company</p><div className="flex flex-col gap-3 text-sm text-white/65"><Link href="/about">About I-Manage</Link><Link href="/resources">Resources</Link><Link href="/contact">Contact</Link></div></div><div><p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9f45b]">Reach us</p><p className="text-sm leading-6 text-white/65">Nairobi, Kenya<br />hello@siemax.co.ke<br />+254 700 000 000</p></div></div><div className="mx-auto flex max-w-[1320px] flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs text-white/40 sm:flex-row sm:justify-between lg:px-10"><span>© {new Date().getFullYear()} Siemax Ltd. All rights reserved.</span><span>Built for property owners who think bigger.</span></div></footer>
 }
 
 const features = [
