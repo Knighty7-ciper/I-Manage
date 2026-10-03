@@ -19,11 +19,14 @@ import { runMigrations } from "@/lib/db/migrate"
  * schema is set up + scans fire.
  */
 export async function POST(req: Request) {
-  const url = process.env.CRON_SECRET
-  if (url) {
+  const secret = process.env.CRON_SECRET
+  if (process.env.NODE_ENV === "production" && !secret) {
+    return errorResponse("CRON_SECRET must be configured in production", 503)
+  }
+  if (secret) {
     const auth = req.headers.get("authorization") || ""
     const got = auth.replace(/^Bearer\s+/i, "").trim()
-    if (got !== url) {
+    if (got !== secret) {
       return errorResponse("Forbidden: missing or invalid CRON_SECRET", 403)
     }
   }
