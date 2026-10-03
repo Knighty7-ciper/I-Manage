@@ -52,6 +52,10 @@ export async function updateSession(request: NextRequest) {
 
   const isDashboard = pathname.startsWith("/dashboard")
   const isApi = pathname.startsWith("/api/")
+  const isExternalApi =
+    pathname === "/api/health" ||
+    pathname === "/api/cron/run" ||
+    pathname === "/api/mpesa/callback"
   const isAuthPage =
     pathname.startsWith("/auth/login") ||
     pathname.startsWith("/auth/sign-up")
@@ -75,7 +79,7 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  if (!user && isApi) {
+  if (!user && isApi && !isExternalApi) {
     return NextResponse.json(
       { error: "Unauthorized" },
       { status: 401, headers: { "content-type": "application/json" } },

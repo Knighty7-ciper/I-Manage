@@ -268,9 +268,7 @@ export function isValidKenyanPhone(input: string): boolean {
 export function isFromSafaricom(remoteAddr: string | null): boolean {
   const list = (process.env.MPESA_ALLOWED_CALLBACK_IPS || "").split(",").map((s) => s.trim()).filter(Boolean)
   if (list.length === 0) {
-    // In dev/sandbox we don't enforce — the URL is often reachable from
-    // localhost via ngrok or similar. Production installs should set this.
-    return true
+    return process.env.MPESA_ENV !== "production"
   }
   if (!remoteAddr) return false
   for (const allowed of list) {
@@ -287,7 +285,7 @@ export function isFromSafaricom(remoteAddr: string | null): boolean {
 function ipInCidr(ip: string, cidr: string): boolean {
   const [base, bitsStr] = cidr.split("/")
   const bits = Number(bitsStr)
-  if (isNaN(bits)) return false
+  if (!Number.isInteger(bits) || bits < 0 || bits > 32) return false
   const ipInt = ipToInt(ip)
   const baseInt = ipToInt(base)
   if (ipInt === null || baseInt === null) return false
